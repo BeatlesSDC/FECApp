@@ -8,7 +8,7 @@ module.exports = {
   watch: true,
   output: {
     path: OUT_DIR,
-    filename: 'app.js'
+    filename: 'bundle.js'
   },
   module: {
     rules: [
