@@ -13,7 +13,7 @@ class Question extends React.Component{
       helpClicked: false
     }
   }
-
+report
   componentDidMount () {
     this.setState({
       helpfulness: this.props.question.question_helpfulness
