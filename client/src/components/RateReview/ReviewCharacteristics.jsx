@@ -19,16 +19,18 @@ class ReviewCharacteristics extends React.Component {
   // }
 
   render() {
+    console.log('metadata in review characteristics:', this.props.metaData)
     if (this.props.metaData === undefined) {
       return '';
     }
 
-    let myBarSize = this.props.metaData.Size ? { width: Math.round((this.props.metaData.Size.value / 5 * 100)) + '%' } : { width: '0%' }
-    let myBarLength = this.props.metaData.Length ? { width: Math.round((this.props.metaData.Length.value / 5 * 100)) + '%' } : { width: '0%' }
-    let myBarWidth = this.props.metaData.Width ? { width: Math.round((this.props.metaData.Width.value / 5 * 100)) + '%' } : { width: '0%' }
-    let myBarFit = this.props.metaData.Fit ? { width: Math.round((this.props.metaData.Fit.value / 5 * 100)) + '%' } : { width: '0%' }
-    let myBarComfort = this.props.metaData.Comfort ? { width: Math.round((this.props.metaData.Comfort.value / 5 * 100)) + '%' } : { width: '0%' }
-    let myBarQuality = this.props.metaData.Quality ? { width: Math.round((this.props.metaData.Quality.value / 5 * 100)) + '%' } : { width: '0%' }
+    let myBarSize = this.props.metaData.Size ? { width: Math.round((this.props.metaData.Size.reduce((sum, rating) => sum += rating) / this.props.metaData.Size) / 5 * 100) + '%' } : { width: '0%' }
+    let myBarLength = this.props.metaData.Length ? { width: Math.round((this.props.metaData.Length.reduce((sum, rating) => sum += rating) / this.props.metaData.Length) / 5 * 100) + '%' } : { width: '0%' }
+    let myBarWidth = this.props.metaData.Width ? { width: Math.round((this.props.metaData.Width.reduce((sum, rating) => sum += rating) / this.props.metaData.Width) / 5 * 100) + '%' } : { width: '0%' }
+    let myBarFit = this.props.metaData.Fit ? { width: Math.round((this.props.metaData.Fit.reduce((sum, rating) => sum += rating) / this.props.metaData.Fit) / 5 * 100) + '%' } : { width: '0%' }
+    let myBarComfort = this.props.metaData.Comfort ? { width: Math.round((this.props.metaData.Comfort.reduce((sum, rating) => sum += rating) / this.props.metaData.Comfort) / 5 * 100) + '%' } : { width: '0%' }
+    let myBarQuality = this.props.metaData.Quality ? { width: Math.round((this.props.metaData.Quality.reduce((sum, rating) => sum += rating) / this.props.metaData.Quality.length) / 5 * 100) + '%' } : { width: '0%' }
+    console.log(myBarQuality);
     return (
       <div>
         <div className="row responseText"><strong>Characteristics</strong></div>
@@ -78,7 +80,7 @@ class ReviewCharacteristics extends React.Component {
           </tbody></table>
           </div>
           <br></br>
-          <div className="scaleText" style={{ display: this.props.metaData.Comfort ? "block" : "none" }}>QUALITY
+          <div className="scaleText" style={{ display: this.props.metaData.Quality ? "block" : "none" }}>QUALITY
           <div id="myProgress">
             <div style={myBarQuality} id="myBar"><i className="fas fa-caret-down fa-3x"></i></div>
           </div>

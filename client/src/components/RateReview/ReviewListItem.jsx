@@ -53,7 +53,7 @@ class ReviewListItem extends React.Component {
              />
           <br></br><br></br>
         </div>
-        <RatingHelpful helpfulness={review.helpfulness} reviewID={review.review_id} />
+        <RatingHelpful helpfulness={review.helpfulness} reviewID={review._id} />
         <br></br>
       </div>
     );

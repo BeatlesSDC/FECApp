@@ -17,8 +17,8 @@ class ReviewListImages extends React.Component {
       <div>
         <div id="reviewListImages">
 
-            {this.state.photos.map(photo => (
-              <div key={photo.id}>
+            {this.state.photos.map((photo, i) => (
+              <div key={i}>
               <ImageComponent photo={photo} />
               </div>
             ))}

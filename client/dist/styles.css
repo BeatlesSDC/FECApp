@@ -947,7 +947,7 @@ float: left;
 .reviewListSort {
   flex: 12;
   margin-right: 25px;
-  max-height: 500px;
+  /* max-height: 500px; */
 }
 .reviewlist {
   margin-right: 25px;

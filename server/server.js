@@ -20,7 +20,7 @@ app.use(express.static(path.join(__dirname, "../client/dist")));
 // SERVER ROUTES
 //================================================================================================================
 app.use(async (req, res, next) => {
-  if (req.url !== '/uploadphoto') {
+  if (req.url !== '/uploadphoto' && req.url.slice(0,8) !== '/reviews') {
     try {
       let response = await axios({
         baseURL: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/',
@@ -41,6 +41,24 @@ app.use(async (req, res, next) => {
     next();
   }
 });
+
+app.use('/reviews', async (req, res) => {
+  try {
+    let response = await axios({
+      baseURL: 'http://127.0.0.1:3001/',
+      method: req.method,
+      url: `/reviews${req.url}`,
+      data: req.body ?? {},
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+    res.send(response.data);
+  } catch(err) {
+    console.log(err.response.data);
+    res.sendStatus(500);
+  }
+})
 
 app.post('/uploadphoto', upload.any(), (req, res) => {
   const { headers, files } = req;

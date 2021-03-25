@@ -36,7 +36,7 @@ class ReviewList extends React.Component {
           <div id="reviewListTiles">
             <ul className="no-bullets">
               {this.props.displayReviews.map(review => (
-                <li key={review.review_id} className="listrow">
+                <li key={review._id} className="listrow">
                   <ReviewListItem reviewListItem={review} />
                 </li>
               ))}

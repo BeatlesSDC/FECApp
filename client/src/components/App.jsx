@@ -23,7 +23,7 @@ class App extends React.Component {
       products: [],
       metaData: {},
       currentProduct: {
-        "id": 19783,
+        "id": 19096,
         "campus": "hr-rfe",
         "name": "Alberto Romper",
         "slogan": "Voluptatibus sunt neque repellendus.",
@@ -74,6 +74,7 @@ class App extends React.Component {
       })
   }
   render() {
+    console.log(this.state.metaData)
     return (
       <div style={this.state.blurBackground ? { background: 'black' } : null}>
         <Track moduleName={"Header"}>
@@ -106,7 +107,7 @@ class App extends React.Component {
           <a id='test'></a>
           <div className="section">RATINGS &amp; REVIEWS</div>
           <br></br>
-          <RateReviewData key={'product' + this.state.currentProduct.description.length} metaData={this.state.metaData.characteristics} currProd={this.state.currentProduct} />
+          <RateReviewData key={'product' + this.state.currentProduct.description.length} metaData={this.state.metaData.characteristicReviews} currProd={this.state.currentProduct} />
         </div>
         </Track>
       </div>

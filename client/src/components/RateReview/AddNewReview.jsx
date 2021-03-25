@@ -35,8 +35,7 @@ class AddNewReview extends React.Component {
 
     let metaData = this.props.metaData
     for (var keys in metaData) {
-      console.log(keys)
-      characteristics[metaData[keys].id] = parseInt(this.state[keys]);
+      characteristics[keys] = parseInt(this.state[keys]);
     }
 
     event.preventDefault();
@@ -47,12 +46,13 @@ class AddNewReview extends React.Component {
         "rating": parseInt(this.state.rating.substring(0, 1)),
         "summary": this.state.summary,
         "body": this.state.body,
-        "recommend": Boolean(this.state.recommend),
+        "recommend": this.state.recommend,
         "name": this.state.nickname,
         "email": this.state.email,
         "photos": this.state.photos,
         "characteristics": characteristics
      };
+     console.log('body:', body);
       return axios.post('/reviews', body)
         .then(() => {
           alert('Your Review is submitted!');
