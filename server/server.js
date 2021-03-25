@@ -22,19 +22,35 @@ app.use(express.static(path.join(__dirname, "../client/dist")));
 app.use(async (req, res, next) => {
   if (req.url !== '/uploadphoto') {
     try {
-      let response = await axios({
-        baseURL: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/',
-        method: req.method,
-        url: req.url,
-        data: req.body,
-        headers: {
-          'Authorization': config.TOKEN, //this is what will be imported from config file
-          'Content-Type': 'application/json'
-        }
-      });
-      res.send(response.data);
+      if (req.url.includes('/qa/')) {
+        //connect to my API
+        console.log('qa request: ', req.url);
+        console.log('req params: ', req.params);
+        let response = await axios({
+          baseURL: 'http://localhost:3001/',
+          method: req.method,
+          url: req.url,
+          data: req.body,
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        });
+        res.send(response.data);
+      } else {
+        let response = await axios({
+          baseURL: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/',
+          method: req.method,
+          url: req.url,
+          data: req.body ?? {},
+          headers: {
+            'Authorization': config.TOKEN, //this is what will be imported from config file
+            'Content-Type': 'application/json'
+          }
+        });
+        res.send(response.data.body);
+      }
     } catch(err) {
-      console.log(err.response.data);
+      console.log(err);
       res.sendStatus(500);
     }
   } else {
