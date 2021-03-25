@@ -1059,7 +1059,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var reac
   \*******************/
 /***/ ((module) => {
 
-eval("var TOKEN = 'ef997e9434396b7549bae5454f411b9e7c0d7a7a';\nmodule.exports = {\n  TOKEN: TOKEN\n};\n\n//# sourceURL=webpack://frontendcapstone/./config.js?");
+eval("var TOKEN = '85861c39d5d6a226c6a7f3c113644a092f56d652';\nmodule.exports = {\n  TOKEN: TOKEN\n};\n\n//# sourceURL=webpack://frontendcapstone/./config.js?");
 
 /***/ }),
 
